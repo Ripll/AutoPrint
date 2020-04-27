@@ -1,0 +1,12 @@
+aiogram
+motor
+pyppeteer
+requests
+loguru
+aiofiles
+PyPDF2
+Pillow
+geopy
+aiohttp_session
+aiohttp_security
+aiohttp-jinja2
