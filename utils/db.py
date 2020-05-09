@@ -2,7 +2,7 @@ from config import logger, DataBase
 from pymongo.collection import Collection
 from random import choice
 import string
-from pymongo.errors import DuplicateKeyError
+
 
 class FromUserModel:
     default_data: dict

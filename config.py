@@ -2,8 +2,8 @@ from aiogram import Bot
 from loguru import logger
 from motor.motor_asyncio import AsyncIOMotorClient
 from requests import get
-from utils.imgbb import IMGBB
-from utils.yandex_geocode import YandexGeocoder
+from .utils.imgbb import IMGBB
+from .utils.yandex_geocode import YandexGeocoder
 
 
 img_uploader = IMGBB("56e5d580e7577a258456ac2c0d0c4fe4")

@@ -1,9 +1,9 @@
-from utils.msg import MsgModel
+from ..utils.msg import MsgModel
 from lang import Lang
 from aiogram import types
-from config import ADMINS
 from datetime import datetime, timedelta
-from models.items import Document, Task, Printer
+from .items import Document, Task, Printer
+from .db import User
 
 
 class DocumentMsg(MsgModel):
@@ -154,4 +154,25 @@ class PrinterMsg(MsgModel):
             kb.add(types.InlineKeyboardButton(text="Так, видалити!", callback_data=f"printer:del:{pr['id']}"))
             kb.add(
                 types.InlineKeyboardButton(text=Lang.back_btn, callback_data=f"to_msg:PrinterMsg:def_msg:{pr['id']}"))
+        return msg, kb
+
+
+class AdminStatMsg(MsgModel):
+    async def def_msg(self):
+        msg = "Test"
+        kb = None
+        return msg, kb
+
+
+class AdminUserMsg(MsgModel):
+    async def def_msg(self, u_id):
+        user = await User(u_id).create()
+        msg = f"Ім'я: {user['full_name']}\n" \
+              f"Нікнейм: {user['username']}\n\n" \
+              f"Знижка: {user['discount']}%"
+        kb = types.InlineKeyboardMarkup()
+        kb.add(types.InlineKeyboardButton(text="Замовлення",
+                                          switch_inline_query_current_chat=f"orders:{user['chat_id']}"),
+               types.InlineKeyboardButton(text="Змінити знижку",
+                                          callback_data=f"to_state:set_user_disc:{user['chat_id']}"))
         return msg, kb

@@ -1,4 +1,4 @@
-from utils.db import FromUserModel
+from ..utils.db import FromUserModel
 from config import ADMINS, DataBase
 
 

@@ -7,6 +7,7 @@ aiofiles
 PyPDF2
 Pillow
 geopy
+aiohttp
 aiohttp_session
 aiohttp_security
 aiohttp-jinja2

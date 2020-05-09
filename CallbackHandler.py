@@ -1,9 +1,10 @@
-from utils.callback_helper import CallbackQueryHelper
-from models.items import Document, Task, Printer
+from .utils.callback_helper import CallbackQueryHelper
+from .models.items import Document, Task, Printer
 from config import img_uploader, bot
-from utils.gen_img import get_image
-from models.msg import TaskMsg
-from utils.wfp_api import get_invoice
+from .utils.gen_img import get_image
+from .models.msg import TaskMsg
+from .utils.wfp_api import get_invoice
+
 
 class CallbackHandler(CallbackQueryHelper):
     async def document(self, cmd, d_id, param=None):

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../JuniorCash/.idea/JuniorCash.iml" filepath="$PROJECT_DIR$/../JuniorCash/.idea/JuniorCash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ModerBot/.idea/ModerBot.iml" filepath="$PROJECT_DIR$/../ModerBot/.idea/ModerBot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PrintBot.iml" filepath="$PROJECT_DIR$/.idea/PrintBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RPiPrinter/.idea/RPiPrinter.iml" filepath="$PROJECT_DIR$/../RPiPrinter/.idea/RPiPrinter.iml" />
     </modules>
   </component>
 </project>

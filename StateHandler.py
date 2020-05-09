@@ -1,11 +1,12 @@
-from utils.state_helper import StateHelper
+from .utils.state_helper import StateHelper
 from lang import Lang
-from config import bot, ALLOWED_FORMATS, img_uploader
+from config import bot, ALLOWED_FORMATS, img_uploader, logger
 from aiogram import types
 from aiogram.dispatcher import Dispatcher
-from models.msg import DocumentMsg, CartMsg, LcMsg, PrinterMsg
-from models.items import Document, Printer
-from utils.broadcast import broadcaster
+from .models.msg import DocumentMsg, CartMsg, LcMsg, PrinterMsg
+from .models.items import Document, Printer
+from .models.db import User
+from .utils.broadcast import broadcaster
 
 
 class StateHandler(StateHelper):
@@ -153,8 +154,8 @@ class StateHandler(StateHelper):
                     for i in steps:
                         try:
                             data[i] = self.saver[i]
-                        except:
-                            pass
+                        except Exception as e:
+                            logger.info(e)
                     item = await Printer().create(**data)
                     msg, kb = await PrinterMsg(self.user).def_msg(item['id'])
                     await self.send_msg(msg, kb)
@@ -174,9 +175,16 @@ class StateHandler(StateHelper):
             kb.add(*self.btn(Lang.admin_btns))
             kb.add(self.btn(Lang.back_btn))
             await self.send_msg(msg, kb)
-        elif self.message.text == Lang.admin_btns[0]:
+        elif self.message.text == Lang.admin_btns[0]:  # Додати принтер
             await self.to_state("add_printer")
-        elif self.message.text == Lang.admin_btns[1]:
+        elif self.message.text == Lang.admin_btns[1]:  # Броадкаст
+            await self.to_state("broadcast")
+        elif self.message.text == Lang.admin_btns[2]:  # Статистика
+
+            await self.to_state("broadcast")
+        elif self.message.text == Lang.admin_btns[3]:  # Пошук задачі
+            await self.to_state("broadcast")
+        elif self.message.text == Lang.admin_btns[4]:  # Пошук користувача
             await self.to_state("broadcast")
         elif self.message.text == Lang.back_btn:
             await self.to_state("start")
@@ -195,3 +203,20 @@ class StateHandler(StateHelper):
             dp = Dispatcher.get_current()
             dp.loop.create_task(broadcaster(self.message.text))
             await self.to_state("admin_panel")
+
+    async def find_user(self):
+        if self.first:
+            msg = "Для пошуку введіть один з ідентифікаторів на вибір:\n" \
+                  "  <b>- Нікнейм\n" \
+                  "  - Логін\n" \
+                  "  - ID</b>"
+            kb = self.kb()
+            kb.add(self.btn(Lang.back_btn))
+            await self.send_msg(msg, kb)
+        elif self.message.text == Lang.back_btn:
+            await self.to_state("admin_panel")
+        else:
+            pass
+
+    async def set_user_disc(self, u_id):
+        user = await User(u_id).create()

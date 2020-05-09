@@ -1,7 +1,7 @@
-from models.db import User, Saver
+from ..models.db import User, Saver
 from aiogram import types
 from config import bot
-import models.msg as msg_models
+from ..models import msg as msg_models
 from StateHandler import StateHandler
 from lang import Lang
 

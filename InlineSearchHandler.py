@@ -1,7 +1,7 @@
 from config import logger, bot, geocoder
-from models.db import User
-from models.items import Printer, Document
-from models.msg import DocumentMsg, PrinterMsg
+from .models.db import User
+from .models.items import Printer, Document
+from .models.msg import DocumentMsg, PrinterMsg
 from aiogram import types
 from geopy.distance import vincenty
 from lang import Lang
