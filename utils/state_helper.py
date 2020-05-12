@@ -1,4 +1,4 @@
-from ..models.db import User, Saver
+from models.db import User, Saver
 from aiogram import types
 from config import bot
 

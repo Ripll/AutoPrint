@@ -3,7 +3,7 @@
 
 import requests
 import time
-from ..utils.wfp_config import M_LOGIN, M_KEY, SIGNATURE_FIELDS, TransactionType
+from utils.wfp_config import M_LOGIN, M_KEY, SIGNATURE_FIELDS, TransactionType
 from config import ip, WEBHOOK_PORT, bot
 from random import choice
 import string

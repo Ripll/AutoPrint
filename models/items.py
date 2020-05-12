@@ -1,8 +1,8 @@
-from ..utils.db import ItemModel, ItemField
+from utils.db import ItemModel, ItemField
 from config import DataBase, bot, LIST_PRICE
 from pymongo.collection import Collection
 from datetime import datetime
-from ..utils.ilovepdf import convert_to_pdf, UnsupportedFileFormat
+from utils.ilovepdf import convert_to_pdf, UnsupportedFileFormat
 import aiogram
 from aiofiles.os import remove
 from PyPDF2 import PdfFileReader
@@ -150,7 +150,6 @@ class Task(ItemModel):
             if not await self.db.find_one({"id": random}):
                 return random
 
-
 class Printer(ItemModel):
     db: Collection = DataBase['printers']
 
@@ -158,3 +157,4 @@ class Printer(ItemModel):
     name = ItemField()
     desc = ItemField()
     geo = ItemField()
+    active = ItemField(datetime.now())

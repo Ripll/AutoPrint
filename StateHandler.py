@@ -1,12 +1,14 @@
-from .utils.state_helper import StateHelper
+from utils.state_helper import StateHelper
 from lang import Lang
-from config import bot, ALLOWED_FORMATS, img_uploader, logger
+from config import bot, ALLOWED_FORMATS, img_uploader, logger, DataBase
 from aiogram import types
 from aiogram.dispatcher import Dispatcher
-from .models.msg import DocumentMsg, CartMsg, LcMsg, PrinterMsg
-from .models.items import Document, Printer
-from .models.db import User
-from .utils.broadcast import broadcaster
+from models.msg import *
+from models.items import *
+from models.db import User
+from utils.broadcast import broadcaster
+from utils.types_utils import *
+import re
 
 
 class StateHandler(StateHelper):
@@ -180,12 +182,12 @@ class StateHandler(StateHelper):
         elif self.message.text == Lang.admin_btns[1]:  # Броадкаст
             await self.to_state("broadcast")
         elif self.message.text == Lang.admin_btns[2]:  # Статистика
-
-            await self.to_state("broadcast")
+            msg, kb = await AdminStatMsg(self.user).def_msg()
+            await self.send_msg(msg, kb)
         elif self.message.text == Lang.admin_btns[3]:  # Пошук задачі
-            await self.to_state("broadcast")
+            await self.to_state("find_task")
         elif self.message.text == Lang.admin_btns[4]:  # Пошук користувача
-            await self.to_state("broadcast")
+            await self.to_state("find_user")
         elif self.message.text == Lang.back_btn:
             await self.to_state("start")
         else:
@@ -216,7 +218,51 @@ class StateHandler(StateHelper):
         elif self.message.text == Lang.back_btn:
             await self.to_state("admin_panel")
         else:
-            pass
+            if is_int(self.message.text):
+                user = await DataBase['users'].find_one({"chat_id": int(self.message.text)})
+            else:
+                user = await DataBase['users'].find_one({'username': re.compile(self.message.text, re.IGNORECASE)})
+                if not user:
+                    user = await DataBase['users'].find_one({'full_name': re.compile(self.message.text, re.IGNORECASE)})
+
+            if not user:
+                await self.send_msg("Користувача не знайдено")
+                return
+
+            msg, kb = await AdminUserMsg(self.user).def_msg(user['chat_id'])
+            await self.send_msg(msg, kb)
+
+    async def find_task(self):
+        if self.first:
+            msg = "Для пошуку введіть ID завдання:"
+            kb = self.kb()
+            kb.add(self.btn(Lang.back_btn))
+            await self.send_msg(msg, kb)
+        elif self.message.text == Lang.back_btn:
+            await self.to_state("admin_panel")
+        elif self.message.text and self.message.text.isdigit():
+            task = await Task.db.find_one({"id": self.message.text})
+            if task:
+                msg, kb = await AdminTaskMsg(self.user).def_msg(task['id'])
+                await self.send_msg(msg, kb)
+            else:
+                await self.send_msg("Задачі не знайдено.")
+        else:
+            await self.send_msg(Lang.error_msg)
 
     async def set_user_disc(self, u_id):
-        user = await User(u_id).create()
+        user = await User(int(u_id)).create()
+        if self.first:
+            msg = f"Вкажіть нову знижку для {user['full_name']}:"
+            kb = self.kb()
+            kb.add(self.btn(Lang.back_btn))
+            await self.send_msg(msg, kb)
+        elif is_float(self.message.text) and 0 <= float(self.message.text) <= 100:
+            await self.send_msg("Успішно змінено!")
+            user['discount'] = float(self.message.text)
+            await user.save()
+            await self.to_state("admin_panel")
+            msg, kb = await AdminUserMsg(self.user).def_msg(user['chat_id'])
+            await self.send_msg(msg, kb)
+        else:
+            await self.send_msg(Lang.error_msg)

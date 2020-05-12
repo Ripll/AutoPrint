@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68452647-d575-454e-8b3d-9e3c2303fb0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PrintBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PrintBot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/types_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CallbackHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/CallbackHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InlineSearchHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/InlineSearchHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StateHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/StateHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang.py" beforeDir="false" afterPath="$PROJECT_DIR$/lang.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/items.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/msg.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/msg.py" afterDir="false" />
@@ -29,6 +26,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,8 +56,36 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\RPiPrinter" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.bot">
+    <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PrintBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="insert_ids" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="JuniorCash" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -78,6 +110,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bot" />
         <item itemvalue="Python.insert_ids" />
       </list>
     </recent_temporary>
@@ -92,40 +125,58 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587999895796</updated>
-      <workItem from="1587999898222" duration="27946000" />
+      <workItem from="1587999898222" duration="38335000" />
+      <workItem from="1589129032128" duration="7095000" />
     </task>
+    <task id="LOCAL-00001" summary="Refact imports">
+      <created>1589065646554</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589065646554</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refact imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refact imports" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1589065645594">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589065645594" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1588888988860">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588888988860" />
-    <state width="724" height="210" key="GridCell.Tab.0.bottom" timestamp="1588618855333">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1589208357096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588618855333" />
-    <state width="724" height="210" key="GridCell.Tab.0.center" timestamp="1588618855333">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589208357096" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1589208357096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588618855333" />
-    <state width="724" height="210" key="GridCell.Tab.0.left" timestamp="1588618855333">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589208357096" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1589208357095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588618855333" />
-    <state width="724" height="210" key="GridCell.Tab.0.right" timestamp="1588618855333">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589208357095" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1589208357096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="724" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588618855333" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589065054715">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589208357096" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589106888087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589065054715" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589106888087" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PrintBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1589130530369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PrintBot$insert_ids.coverage" NAME="insert_ids Coverage Results" MODIFIED="1588618855322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../JuniorCash" />
   </component>
 </project>

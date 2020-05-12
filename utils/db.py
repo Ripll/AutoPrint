@@ -31,7 +31,7 @@ class FromUserModel:
             await self.db.update_one({'chat_id': self.chat_id}, {"$set": to_insert}, upsert=True)
             self.db_object = await self.db.find_one({"chat_id": self.chat_id})
 
-        if self.from_user:
+        if not isinstance(self.from_user, int):
             self.upd_data()
 
         return self
@@ -88,7 +88,7 @@ class ItemModel:
 
         if self._db_object:
             for i in self.get_all_params():
-                self._db_object[i] = self._db_object.get(i, self.__class__.__dict__[i])
+                self._db_object[i] = self._db_object.get(i, self.__class__.__dict__[i].default)
             return self
         else:
             return None
@@ -128,6 +128,7 @@ class ItemModel:
         return self._db_object[name]
 
     async def save(self):
+        logger.info(self._db_object)
         await self.db.update_one({"_id": self._db_object['_id']},
                                  {"$set": self._db_object},
                                  upsert=True)

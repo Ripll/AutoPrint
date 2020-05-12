@@ -1,9 +1,9 @@
-from ..utils.msg import MsgModel
+from utils.msg import MsgModel
 from lang import Lang
 from aiogram import types
 from datetime import datetime, timedelta
-from .items import Document, Task, Printer
-from .db import User
+from models.items import Document, Task, Printer
+from models.db import User
 
 
 class DocumentMsg(MsgModel):
@@ -159,7 +159,10 @@ class PrinterMsg(MsgModel):
 
 class AdminStatMsg(MsgModel):
     async def def_msg(self):
-        msg = "Test"
+        msg = f"Всього користувачів: {await self.user.db.count_documents({})}" \
+              f" (+{await self.user.db.count_documents({'create_date': {'$gt': datetime.now()-timedelta(days=7)}})}/тиждень)\n" \
+              f"Надруковано : {await Task.db.count_documents({'print_date': {'$lt': datetime.now()}})}" \
+              f" (+{await Task.db.count_documents({'print_date': {'$gt': datetime.now()-timedelta(days=7)}})}/тиждень)"
         kb = None
         return msg, kb
 
@@ -167,12 +170,32 @@ class AdminStatMsg(MsgModel):
 class AdminUserMsg(MsgModel):
     async def def_msg(self, u_id):
         user = await User(u_id).create()
-        msg = f"Ім'я: {user['full_name']}\n" \
-              f"Нікнейм: {user['username']}\n\n" \
+        msg = f"Ім'я: {user.get_mention()}\n" \
+              f"Нікнейм: @{user['username']}\n\n" \
               f"Знижка: {user['discount']}%"
         kb = types.InlineKeyboardMarkup()
         kb.add(types.InlineKeyboardButton(text="Замовлення",
-                                          switch_inline_query_current_chat=f"orders:{user['chat_id']}"),
+                                          switch_inline_query_current_chat=f"tasks:{user['chat_id']}"),
                types.InlineKeyboardButton(text="Змінити знижку",
                                           callback_data=f"to_state:set_user_disc:{user['chat_id']}"))
+        return msg, kb
+
+
+class AdminTaskMsg(MsgModel):
+    async def def_msg(self, t_id):
+        task = await Task().get(t_id)
+        user = await User(task['chat_id']).create()
+        msg = f"Користувач: {user.get_mention()}\n" \
+              f"Номер: {task['id']}\n" \
+              f"Сторінок до друку: {task['pages']}\n" \
+              f"Ціна: {task['price']}грн.\n\n"
+        kb = types.InlineKeyboardMarkup()
+        kb.row(types.InlineKeyboardButton(text=('❌ Не сплачено', '✅ Сплачено')[task['paid']],
+                                          callback_data=f"task:{t_id}:change_paid"),
+               types.InlineKeyboardButton(text=('Не надруковано', '📑 Надруковано')[bool(task['print_date'])],
+                                          callback_data=f"task:{t_id}:change_print_date")
+               )
+        kb.row(types.InlineKeyboardButton(text="Перерахувати", callback_data=f"task:{t_id}:calculate"),
+               types.InlineKeyboardButton(text="Файли", switch_inline_query_current_chat=f"files:{t_id}"))
+
         return msg, kb

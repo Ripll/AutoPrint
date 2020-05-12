@@ -1,15 +1,17 @@
-from .utils.callback_helper import CallbackQueryHelper
-from .models.items import Document, Task, Printer
+from utils.callback_helper import CallbackQueryHelper
+from models.items import Document, Task, Printer
 from config import img_uploader, bot
-from .utils.gen_img import get_image
-from .models.msg import TaskMsg
-from .utils.wfp_api import get_invoice
+from utils.gen_img import get_image
+from models.msg import TaskMsg, AdminTaskMsg
+from models.db import User
+from utils.wfp_api import get_invoice
+from datetime import datetime
 
 
 class CallbackHandler(CallbackQueryHelper):
     async def document(self, cmd, d_id, param=None):
         doc = await Document().get(d_id)
-        if doc['task_id']:
+        if doc['task_id'] and not self.user.is_admin():
             self.text = "Документ вже чекає друку"
             self.show_alert = True
         elif cmd == "del":
@@ -66,4 +68,29 @@ class CallbackHandler(CallbackQueryHelper):
             self.text = "Успішно видалено!"
             self.show_alert = True
 
+    async def task(self, t_id, cmd):
+        t = await Task().get(t_id)
+        if cmd == "change_paid":
+            t['paid'] = not t['paid']
+        elif cmd == "change_print_date":
+            if t['print_date']:
+                t['print_date'] = None
+            else:
+                t['print_date'] = datetime.now()
+        elif cmd == "calculate":
+            user = await User(t['chat_id']).create()
 
+            pages = 0
+            total_price = 0
+
+            async for i in Document().db.find({"task_id": t_id}):
+                doc = await Document().get(i['id'])
+                total_price += doc.get_price()
+                pages += doc.get_count_of_pages()
+            t['price'] = round(user.get_price_with_discount(total_price), 2)
+            t['pages'] = pages
+            t["payment_url"] = await get_invoice(self.user['chat_id'], t['id'], t['price'])
+
+        await t.save()
+        msg, kb = await AdminTaskMsg(self.user).def_msg(t_id)
+        await self.edit(msg, kb)

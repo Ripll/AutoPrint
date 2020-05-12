@@ -3,7 +3,7 @@ from bot import dp
 from aiogram.dispatcher.webhook import get_new_configured_app
 import ssl
 from aiohttp import web
-from .utils.wfp_api import gen_answer
+from utils.wfp_api import gen_answer
 
 
 async def wfp_handler(request):

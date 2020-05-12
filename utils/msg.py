@@ -1,4 +1,4 @@
-from ..models.db import User
+from models.db import User
 
 
 class MsgModel:

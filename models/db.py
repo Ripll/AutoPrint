@@ -1,14 +1,17 @@
-from ..utils.db import FromUserModel
+from utils.db import FromUserModel
 from config import ADMINS, DataBase
+from datetime import datetime
+from pymongo.collection import Collection
 
 
 class User(FromUserModel):
-    db = DataBase["users"]
+    db: Collection = DataBase["users"]
 
     default_data = {
         "state": "start",
         "balance": 10,
-        "discount": 0
+        "discount": 0,
+        "create_date": datetime.now()
     }
 
     def upd_data(self):
@@ -20,6 +23,9 @@ class User(FromUserModel):
 
     def get_price_with_discount(self, price):
         return price * ((100 - self['discount']) / 100)
+
+    def get_mention(self):
+        return f"<a href='tg://user?id={self['chat_id']}'>{self['full_name']}</a>"
 
 
 class Saver(FromUserModel):

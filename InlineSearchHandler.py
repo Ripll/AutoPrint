@@ -1,10 +1,11 @@
 from config import logger, bot, geocoder
-from .models.db import User
-from .models.items import Printer, Document
-from .models.msg import DocumentMsg, PrinterMsg
+from models.db import User
+from models.items import Printer, Document, Task
+from models.msg import DocumentMsg, PrinterMsg, AdminTaskMsg
 from aiogram import types
 from geopy.distance import vincenty
 from lang import Lang
+from datetime import datetime, timedelta
 
 
 class InlineSearchHandler:
@@ -37,6 +38,33 @@ class InlineSearchHandler:
                                                              title=title,
                                                              input_message_content=click_text,
                                                              description=desc))
+        elif "files:" in self.query and self.user.is_admin():
+            _, t_id = self.query.split(":")
+            async for i in Document().db.find({"task_id": t_id}).skip(self.off).limit(self.max_res):
+                title = i["name"]
+                desc = "Налаштування файлу"
+
+                click_text = types.InputTextMessageContent(Lang.inline_send_file, parse_mode="html")
+
+                result.append(types.InlineQueryResultArticle(id="doc_"+str(i["id"]),
+                                                             title=title,
+                                                             input_message_content=click_text,
+                                                             description=desc))
+        elif "tasks:" in self.query and self.user.is_admin():
+            _, user_id = self.query.split(":")
+            async for i in Task().db.find({'chat_id': int(user_id),
+                                           'print_date': None}).skip(self.off).limit(self.max_res):
+                msg, kb = await AdminTaskMsg(self.user).def_msg(i['id'])
+                title = i["id"]
+                desc = msg
+
+                click_text = types.InputTextMessageContent(msg, parse_mode="html")
+
+                result.append(types.InlineQueryResultArticle(id="1_"+i['id'],
+                                                             title=title,
+                                                             input_message_content=click_text,
+                                                             description=desc,
+                                                             reply_markup=kb))
         else:
             if self.query:
                 res = await geocoder.get_geo_by_addr(self.query)
@@ -51,23 +79,24 @@ class InlineSearchHandler:
                                      key=lambda x: vincenty((self.pos[0], self.pos[1]), (x['geo'][0], x['geo'][1])).km)
 
             for i in temp_result[self.off:self.off+self.max_res]:
+                works = (datetime.now().timestamp() - i['active']) < 60*4
                 msg, kb = await PrinterMsg(self.user).def_msg(i['id'])
                 title = i["name"]
                 desc = i['desc']
-
+                title += (" (🔴 Не працює)", " (🟢 Працює)")[works]
                 if self.pos:
                     dist = vincenty((self.pos[0], self.pos[1]), (i['geo'][0], i['geo'][1])).km
                     msg += f"\n\n📍 {dist:.2f}км. від тебе"
                     title += f"  (📍 {dist:.2f}км. від тебе)"
 
                 click_text = types.InputTextMessageContent(msg, parse_mode="html")
-
-                result.append(types.InlineQueryResultArticle(id="p_" + str(i["_id"]),
-                                                             title=title,
-                                                             thumb_url=i['img_link'],
-                                                             input_message_content=click_text,
-                                                             description=desc,
-                                                             reply_markup=kb))
+                if works or self.user.is_admin():
+                    result.append(types.InlineQueryResultArticle(id="p_" + str(i["_id"]),
+                                                                 title=title,
+                                                                 thumb_url=i['img_link'],
+                                                                 input_message_content=click_text,
+                                                                 description=desc,
+                                                                 reply_markup=kb))
 
         if not result and self.off == 0:
             t = Lang.inline_empty_result

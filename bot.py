@@ -2,7 +2,7 @@ from aiogram import executor, types, Dispatcher
 from StateHandler import StateHandler
 from CallbackHandler import CallbackHandler
 from InlineSearchHandler import InlineSearchHandler, ProcessChosen
-from .models.db import User
+from models.db import User
 from config import bot, logger
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from lang import Lang
