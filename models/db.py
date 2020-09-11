@@ -9,7 +9,6 @@ class User(FromUserModel):
 
     default_data = {
         "state": "start",
-        "balance": 10,
         "discount": 0,
         "create_date": datetime.now()
     }

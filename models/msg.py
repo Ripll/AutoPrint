@@ -76,7 +76,7 @@ class CartMsg(MsgModel):
 
             price_with_disc = round(self.user.get_price_with_discount(price), 2)
             msg += f"\nВсього до сплаты: <b>{price_with_disc:.2f}грн.</b>" \
-                   f" <i>(знижка {price - price_with_disc:.0f}грн)</i>\n\n" \
+                   f" <i>(знижка {price - price_with_disc:.2f}грн)</i>\n\n" \
                    f"Все вірно?"
             kb = types.InlineKeyboardMarkup()
             kb.add(types.InlineKeyboardButton(text="Так, продовжити", callback_data="create_task"))

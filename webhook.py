@@ -40,8 +40,8 @@ async def on_shutdown(app):
 
 
 if __name__ == '__main__':
-    app = get_new_configured_app(dispatcher=dp, path=WEBHOOK_PATH)
 
+    app = get_new_configured_app(dispatcher=dp, path=WEBHOOK_PATH)
     app.router.add_route("*", "/wfp", wfp_handler, name="wfp_handler")
 
     # Setup event handlers.

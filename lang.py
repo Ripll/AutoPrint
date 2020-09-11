@@ -38,4 +38,5 @@ class Lang:
                       "Images: jpg, jpeg, png, tif, tiff"
     error_fileformat_msg = "Цей формат не підтримується :с"
     error_filesize_msg = "Підтримуються файли тільки до 10мб"
+    other_file_error = "Помилка відкриття файлу, спробуйте ще раз."
     error_msg = "Такої команди не знайдено :с"

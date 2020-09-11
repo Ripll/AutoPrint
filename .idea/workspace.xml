@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68452647-d575-454e-8b3d-9e3c2303fb0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/types_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PrintBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PrintBot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CallbackHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/CallbackHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InlineSearchHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/InlineSearchHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StateHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/StateHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/msg.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/msg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/callback_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/callback_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/msg.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/msg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/state_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/state_helper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/wfp_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/wfp_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webhook.py" beforeDir="false" afterPath="$PROJECT_DIR$/webhook.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +32,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RPiPrinter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestProj" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,11 +44,36 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\GSheetsAppendBot" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\PycharmProjects\RPiPrinter" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.bot">
+  <component name="RunManager" selected="Python.temp">
+    <configuration name="bot (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GSheetsAppendBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../GSheetsAppendBot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../GSheetsAppendBot/bot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PrintBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -108,8 +118,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TestProj" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../TestProj" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../TestProj/temp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.temp" />
+        <item itemvalue="Python.bot (1)" />
         <item itemvalue="Python.bot" />
         <item itemvalue="Python.insert_ids" />
       </list>
@@ -126,7 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587999895796</updated>
       <workItem from="1587999898222" duration="38335000" />
-      <workItem from="1589129032128" duration="7095000" />
+      <workItem from="1589129032128" duration="24850000" />
     </task>
     <task id="LOCAL-00001" summary="Refact imports">
       <created>1589065646554</created>
@@ -135,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589065646554</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix">
+      <created>1589294686740</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589294686740</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,33 +184,42 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refact imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refact imports" />
+    <MESSAGE value="Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1589065645594">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589533910731">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589065645594" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1588888988860">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589533910731" />
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1589294685759">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588888988860" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1589208357096">
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589294685759" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1589578319358">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589208357096" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1589208357096">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589578319358" />
+    <state width="746" height="254" key="GridCell.Tab.0.bottom" timestamp="1589748514500">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589208357096" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1589208357095">
+    <state width="746" height="254" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589748514500" />
+    <state width="746" height="254" key="GridCell.Tab.0.center" timestamp="1589748514500">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589208357095" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1589208357096">
+    <state width="746" height="254" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589748514500" />
+    <state width="746" height="254" key="GridCell.Tab.0.left" timestamp="1589748514500">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589208357096" />
+    <state width="746" height="254" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589748514500" />
+    <state width="746" height="254" key="GridCell.Tab.0.right" timestamp="1589748514500">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="746" height="254" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589748514500" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589294689260">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589294689260" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589106888087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -178,5 +228,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PrintBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1589130530369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PrintBot$insert_ids.coverage" NAME="insert_ids Coverage Results" MODIFIED="1588618855322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../JuniorCash" />
+    <SUITE FILE_PATH="coverage/PrintBot$bot__1_.coverage" NAME="bot (1) Coverage Results" MODIFIED="1589536484973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../GSheetsAppendBot" />
+    <SUITE FILE_PATH="coverage/PrintBot$temp.coverage" NAME="temp Coverage Results" MODIFIED="1589579229422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../TestProj" />
   </component>
 </project>

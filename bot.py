@@ -19,7 +19,6 @@ async def pass_msg_with_btns(message):
     pass
 
 
-@logger.catch
 @dp.message_handler(commands=['start'])
 async def start_cmd_handler(message: types.Message):
     user = await User(message.from_user).create()
@@ -27,7 +26,6 @@ async def start_cmd_handler(message: types.Message):
     await StateHandler(user, message, first=True)
 
 
-@logger.catch
 @dp.message_handler(content_types=['text', 'photo', 'location', 'document'])
 async def all_msg_handler(message: types.Message):
     user = await User(message.from_user).create()

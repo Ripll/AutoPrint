@@ -40,12 +40,15 @@ class StateHandler(StateHelper):
             else:
                 await bot.send_chat_action(self.chat_id, "upload_document")
                 doc = await Document.new(self.message.document, self.message.from_user)
-                msg, file_id, kb = await DocumentMsg(self.user).def_msg(doc['id'])
-                await bot.send_document(self.chat_id,
-                                        caption=msg,
-                                        document=file_id,
-                                        reply_markup=kb,
-                                        parse_mode="html")
+                if doc:
+                    msg, file_id, kb = await DocumentMsg(self.user).def_msg(doc['id'])
+                    await bot.send_document(self.chat_id,
+                                            caption=msg,
+                                            document=file_id,
+                                            reply_markup=kb,
+                                            parse_mode="html")
+                else:
+                    await self.send_msg(Lang.other_file_error)
         elif self.message.text == Lang.menu_btns[0]:
             msg, kb = await LcMsg(self.user).def_msg()
             await self.send_msg(msg, kb)

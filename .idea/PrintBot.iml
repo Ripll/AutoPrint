@@ -7,5 +7,7 @@
     <orderEntry type="module" module-name="JuniorCash" />
     <orderEntry type="module" module-name="ModerBot" />
     <orderEntry type="module" module-name="RPiPrinter" />
+    <orderEntry type="module" module-name="GSheetsAppendBot" />
+    <orderEntry type="module" module-name="TestProj" />
   </component>
 </module>

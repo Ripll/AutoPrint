@@ -120,9 +120,12 @@ class Document(ItemModel):
             converted = True
 
         pdf_file_obj = (await bot.download_file_by_id(file_id=file_id)).read()
-        pdf = PdfFileReader(io.BytesIO(pdf_file_obj))
+        try:
+            pdf = PdfFileReader(io.BytesIO(pdf_file_obj))
 
-        pages_count = pdf.getNumPages()
+            pages_count = pdf.getNumPages()
+        except:
+            return None
 
         return await Document().create(name=f"{file_name}.pdf",
                                        file_id=file_id,
@@ -149,6 +152,7 @@ class Task(ItemModel):
             random = ''.join([choice(string.digits) for n in range(5)])
             if not await self.db.find_one({"id": random}):
                 return random
+
 
 class Printer(ItemModel):
     db: Collection = DataBase['printers']
